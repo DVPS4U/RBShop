@@ -18,7 +18,7 @@ if [ -z "${Components}" ]; then
 exit
 fi
 
-if [ ! -e Components/"${Components}.sh" ]; then
+if [ ! -e Components/${Components}.sh ]; then
 
   echo -e "\e[34m Components Script is missing \e[m"
 
