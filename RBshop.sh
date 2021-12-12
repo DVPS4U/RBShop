@@ -1,8 +1,8 @@
 #!/bin/bash
 
-user_id="${id -u}"
+user_id=${id -u}
 
-if [ "${user_id}" -ne 0 ]; then
+if [ ${user_id} -ne 0 ]; then
 
   echo -e "/e[31m Please run the script as a root user /e[m"
 
