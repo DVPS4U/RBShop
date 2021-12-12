@@ -1,8 +1,8 @@
 #!/bin/bash
 
-USER_UID=$(id -u)
+USER_UID="${id -u}"
 
-if [ ${USER_UID} -ne 0 ]; then
+if [ "${USER_UID}" -ne 0 ]; then
 
   echo -e "/e[31m Please run the script as a root user /e[m"
 
@@ -18,7 +18,7 @@ if [ -z "${components}" ]; then
 exit
 fi
 
-if [ -ne components/${components}.sh ]; then
+if [ -ne components/"${components}.sh" ]; then
 
   echo -e "/e[34m Components Script is missing /e[m"
 
