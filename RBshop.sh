@@ -9,16 +9,16 @@ if [ "${USER_UID}" -ne 0 ]; then
 exit
 fi
 
-components=$1
+Components=$1
 
-if [ -z "${components}" ]; then
+if [ -z "${Components}" ]; then
 
   echo -e "\e[33m Component Input is missing \e[m"
 
 exit
 fi
 
-if [ -ne components/"${components}.sh" ]; then
+if [ -ne Components/"${Components}.sh" ]; then
 
   echo -e "\e[34m Components Script is missing \e[m"
 
