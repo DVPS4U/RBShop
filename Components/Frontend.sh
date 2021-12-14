@@ -1,31 +1,18 @@
 #!/bin/bash
 
-yum install nginx -y
-
-if [ $? -ne 0 ]; then
-  exit 1
-fi
-
-systemctl enable nginx
-
-systemctl start nginx
+yum install nginx -y &>> ${LOG_FILE}
+STAT_CHECK $? "Nginx Installation"
 
 curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"
+STAT_CHECK $? "Download Frontend"
 
-if [ $? -ne 0 ]; then
-  exit 1
-fi
+rm -rf  /usr/share/nginx/html/*
+STAT_CHECK $? "Remove Old HTML files"
 
-cd /usr/share/nginx/html
+cd /tmp && unzip -o /tmp/frontend.zip &>> ${LOG_FILE}
+STAT_CHECK $? "Extracting Frontend Content"
 
-#rm -rf *
+Cd /tmp/frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf
+STAT_CHECK $? "Update NGINX File"
 
-#unzip /tmp/frontend.zip
-
-#mv frontend-main/* .
-
-#mv static/* .
-
-#rm -rf frontend-master static README.md
-
-#mv localhost.conf /etc/nginx/default.d/roboshop.conf
+system_ctl enable nginx &>> ${LOG_FILE} && system_ctl restart nginx &>> ${LOG_FILE}
