@@ -12,3 +12,5 @@ else
   echo -e "\e[32m ${2} - FAILED \e[m"
 fi
 }
+
+set-hostname -skip-apply ${Components}
