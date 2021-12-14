@@ -1,6 +1,7 @@
 #!/bin/bash
+source Components/common.sh
 
-yum install nginx -y &>>${LOG_FILE}
+yum install nginx -y &>> ${LOG_FILE}
 STAT_CHECK $? "Nginx Installation"
 
 curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"
@@ -18,5 +19,5 @@ STAT_CHECK $? "Copying Frontend Content"
 cp /tmp/frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf
 STAT_CHECK $? "Update NGINX File"
 
-system_ctl enable nginx &>>${LOG_FILE} && system_ctl restart nginx &>>$ {LOG_FILE}
+system_ctl enable nginx &>>$ {LOG_FILE} && system_ctl restart nginx &>>$ {LOG_FILE}
 STAT_CHECK $? "Restart Nginx"
