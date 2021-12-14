@@ -1,10 +1,10 @@
 #!/bin/bash
 source Components/CommonScript.sh
 yum install -y mongodb-org  &>> ${LOG_FILE}
-STATUS_CHECK $? "MongoDB Installation"
+STAT_CHECK $? "MongoDB Installation"
 
 systemctl enable mongod &>> ${LOG_FILE} && systemctl restart mongod &>> ${LOG_FILE}
-STATUS_CHECK $? "MongoDB Restart"
+STAT_CHECK $? "MongoDB Restart"
 
 #Update Liste IP address from 127.0.0.1 to 0.0.0.0 in config file
 
