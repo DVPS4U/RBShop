@@ -11,7 +11,7 @@ STAT_CHECK $? "Nginx Installation"
 #STAT_CHECK $? "Remove Old HTML files"
 
 #cd /tmp && unzip -o /tmp/frontend.zip &>> ${LOG_FILE}
-STAT_CHECK $? "Extracting Frontend Content"
+#STAT_CHECK $? "Extracting Frontend Content"
 
 #cd /tmp/frontend-main/static && cp -r * /usr/share/nginx/html
 #STAT_CHECK $? "Copying Frontend Content"
