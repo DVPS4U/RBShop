@@ -5,11 +5,11 @@ rm -f ${LOG_FILE}
 
 STAT_CHECK() {
   if [ $1 -ne 0 ];then
-  echo -e "\e[32m ${2} - FAILED \e[m"
+  echo -e "\e[1m ${2} -\e[32m FAILED \e[m"
 
 exit 1
 else
-  echo -e "\e[32m ${2} - Success \e[m"
+  echo -e "\e[1m ${2} - \e[32m Success \e[m"
 fi
 }
 
