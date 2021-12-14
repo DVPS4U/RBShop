@@ -1,6 +1,6 @@
 #!/bin/bash
-source Components/$CommonScript.sh
-yum install mongodb-org -y  &>> ${LOG_FILE}
+source Components/$"{CommonScript.sh}"
+yum install -y mongodb-org  &>> ${LOG_FILE}
 STATUS_CHECK $? "MongoDB Installation"
 
 systemctl enable mongod &>> ${LOG_FILE} && systemctl restart mongod &>> ${LOG_FILE}
