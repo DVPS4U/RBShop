@@ -1,5 +1,5 @@
 #!/bin/bash
-source Components/common.sh
+source Components/CommonScript.sh
 
 yum install nginx -y &>> ${LOG_FILE}
 STAT_CHECK $? "Nginx Installation"
