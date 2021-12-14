@@ -1,5 +1,5 @@
 #!/bin/bash
-source Components/$"{CommonScript.sh}"
+source Components/CommonScript.sh
 yum install -y mongodb-org  &>> ${LOG_FILE}
 STATUS_CHECK $? "MongoDB Installation"
 
