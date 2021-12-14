@@ -13,5 +13,5 @@ STAT_CHECK $? "Copying Frontend Content"
 cp /tmp/frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf
 STAT_CHECK $? "Update NGINX File"
 
-system_ctl enable nginx &>>$ {LOG_FILE} && system_ctl restart nginx &>>$ {LOG_FILE}
+system_ctl enable nginx &>> ${LOG_FILE} && system_ctl restart nginx &>> ${LOG_FILE}
 STAT_CHECK $? "Restart Nginx"
