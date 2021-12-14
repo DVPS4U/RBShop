@@ -9,7 +9,7 @@ if [ "${USER_UID}" -ne 0 ]; then
 exit
 fi
 
-Components=$1
+export Components=$1
 
 if [ -z "${Components}" ]; then
 
