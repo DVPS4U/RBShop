@@ -18,7 +18,7 @@ STAT_CHECK $? "MongoDB Restart"
 
 Download mongodb
 
-cd mongodb-main
+cd /tmp/mongodb-main
 mongo < catalogue.js &>> ${LOG_FILE} && mongo < users.js &>> ${LOG_FILE}
 STAT_CHECK $? "LOAD SCHEMA"
 
