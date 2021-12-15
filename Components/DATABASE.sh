@@ -1,4 +1,5 @@
 #!/bin/bash
+
 echo -e "\e[1:31m :::>>MANGODB SETUP>>:: \e[0m "
 source Components/CommonScript.sh
 
