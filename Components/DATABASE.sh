@@ -40,6 +40,24 @@ sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/redis.conf &>>${LOG_FILE} && sed -i -e 's/
 STAT_CHECK $? "Redis Update"
 
 #Start Redis Database
-
 systemctl enable redis &>>${LOG_FILE} && systemctl restart redis &>>${LOG_FILE}
 STAT_CHECK $? "Redis Restarted"
+
+
+echo -e "\e[31m :::>>RabbitMQ SETUP>>:: \e[31m "
+
+curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash &>>${LOG_FILE}
+STAT_CHECK $? "Download RabbitMQ"
+#Erlang is a dependency which is needed for RabbitMQ.
+yum install https://github.com/rabbitmq/erlang-rpm/releases/download/v23.2.6/erlang-23.2.6-1.el7.x86_64.rpm rabbitmq-server -y &>>${LOG_FILE}
+STAT_CHECK $? "RabbitMQ & Erlang Installed"
+#Start RabbitMQ
+systemctl enable rabbitmq-server &>>${LOG_FILE} && systemctl restart rabbitmq-server &>>${LOG_FILE}
+STAT_CHECK $? "RabbitMQ Retarted"
+#RabbitMQ comes with a default username / password as guest/guest. But this user cannot be used to connect. Hence we need to create one user for the application.
+
+#Create application user
+rabbitmqctl add_user roboshop roboshop123 &>>${LOG_FILE}
+STAT_CHECK $? "RabbitMQ User Created"
+# rabbitmqctl set_user_tags roboshop administrator
+# rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
