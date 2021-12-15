@@ -27,7 +27,7 @@ mongo < users.js &>>${LOG_FILE}
 STAT_CHECK $? "LOAD SCHEMA"
 
 ## Redis Setup
-
+echo -e "\e[31m :::>>Redis SETUP>>::: \e[31m "
 #Install Redis.
 curl -L https://raw.githubusercontent.com/roboshop-devops-project/redis/main/redis.repo -o /etc/yum.repos.d/redis.repo &>>${LOG_FILE}
 STAT_CHECK $? "Redis Download"
