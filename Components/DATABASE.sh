@@ -55,9 +55,14 @@ STAT_CHECK $? "RabbitMQ & Erlang Installed"
 systemctl enable rabbitmq-server &>>${LOG_FILE} && systemctl restart rabbitmq-server &>>${LOG_FILE}
 STAT_CHECK $? "RabbitMQ Retarted"
 #RabbitMQ comes with a default username / password as guest/guest. But this user cannot be used to connect. Hence we need to create one user for the application.
-
 #Create application user
-rabbitmqctl add_user roboshop roboshop123 &>>${LOG_FILE}
-STAT_CHECK $? "RabbitMQ User Created"
-# rabbitmqctl set_user_tags roboshop administrator
-# rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
+rabbitmqctl list_users | grep roboshop &>>${LOG_FILE}
+if [ $? -ne 0 ]; then
+ rabbitmqctl add_user roboshop roboshop123 &>>${LOG_FILE}
+ STAT_CHECK $? "RabbitMQ User Created"
+    
+fi
+
+rabbitmqctl set_user_tags roboshop administrator
+rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
+STAT_CHECK $? "RabbitMQ User Permission"
