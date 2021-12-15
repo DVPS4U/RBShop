@@ -16,7 +16,7 @@ fi
 set-hostname -skip-apply ${Components}
 
 DOWNLOAD(){
-curl -s -L -o /tmp/${1} "https://github.com/roboshop-devops-project/${1}/archive/main.zip" &>>${LOG_FILE}
+curl -s -L -o /tmp/${1}.zip "https://github.com/roboshop-devops-project/${1}/archive/main.zip" &>>${LOG_FILE}
 STAT_CHECK $? "${1} Downloaded"
 
 cd /tmp
