@@ -96,7 +96,7 @@ STAT_CHECK $? "Uninstall Password Plugin"
 fi
 
 DOWNLOAD mysql
-
+STAT_CHECK $? "Download MySql"
 cd /tmp/mysql-main
 mysql -u root -pRoboShop@1 <shipping.sql &>>${LOG_FILE}
 STAT_CHECK $? "Load Schema"
