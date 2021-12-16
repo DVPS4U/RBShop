@@ -98,5 +98,5 @@ fi
 DOWNLOAD mysql
 
 cd /tmp/mysql-main
-mysql -u root -pRoboShop@1 <shipping.sql &>>${LOG_FILE}
+mysql -u root -pRoboShop@1 < shipping.sql &>>${LOG_FILE}
 STAT_CHECK $? "Load Schema"
