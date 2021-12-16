@@ -85,7 +85,7 @@ echo 'SHOW DATABASE;' | mysql -uroot -pRoboShop@1 &>>{LOG_FILE}
 
 if [ $? -ne 0 ]; then
   echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" >/tmp/pass.sq1
-  mysql --connect-expired-password -uroot -p"${DEFAULT_PASSWORD}" </tmp/pass.sq1  &>>{LOG_FILE}
+  mysql --connect-expired-password -uroot -p"${DEFAULT_PASSWORD}" </tmp/pass.sq1  &>>${LOG_FILE}
   STAT_CHECK $? "Setup new Root Password"
 fi
 
