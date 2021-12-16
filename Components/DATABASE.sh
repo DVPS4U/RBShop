@@ -79,7 +79,7 @@ systemctl enable mysqld &>>${LOG_FILE} && systemctl restart mysqld &>>${LOG_FILE
 STAT_CHECK $? "MySQL Restarted"
 
 #Now a default root password will be generated and given in the log file.
-DEFAULT_PASSWORD=$(sudo grep temporary password /var/log/mysqld.log | awk '{print $NF}')
+DEFAULT_PASSWORD=$(grep temporary password /var/log/mysqld.log | awk '{print $NF}')
 
 echo 'SHOW DATABASE;' | mysql -uroot -pRoboShop@1 &>>{LOG_FILE}
 
