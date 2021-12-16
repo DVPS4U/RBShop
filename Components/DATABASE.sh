@@ -81,7 +81,7 @@ STAT_CHECK $? "MySQL Restarted"
 
 #Now a default root password will be generated and given in the log file.
 DEFAULT_PASSWORD=$(sudo grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}')
-echo 'SHOW DATABASE;' | mysql -uroot -pRoboShop@1 &>>{LOG_FILE}
+echo 'SHOW DATABASE;' | mysql -uroot -pRoboShop@1 &>>${LOG_FILE}
 
 if [ $? -ne 0 ]; then
   echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" >/tmp/pass.sq1
