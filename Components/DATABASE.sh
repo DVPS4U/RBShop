@@ -96,8 +96,12 @@ echo 'uninstall plugin validate_password;' |  mysql -uroot -pRoboShop@1 &>>${LOG
 STAT_CHECK $? "Uninstall Password Plugin"
 fi
 
-DOWNLOAD mysql
-
-cd /tmp/mysql-main
-mysql -u root -pRoboShop@1 < shipping.sql &>>${LOG_FILE}
-STAT_CHECK $? "Load Schema"
+curl -s -L -o /tmp/mysql.zip "https://github.com/roboshop-devops-project/mysql/archive/main.zip" &>>${LOG_FILE}
+STAT_CHECK $? "mysql Downloaded"
+#cd /tmp
+#unzip -o /tmp/mysql.zip &>>${LOG_FILE}
+#STAT_CHECK $? "mysql Extracted"
+#
+#cd /tmp/mysql-main
+#mysql -u root -pRoboShop@1 < shipping.sql &>>${LOG_FILE}
+#STAT_CHECK $? "Load Schema"
