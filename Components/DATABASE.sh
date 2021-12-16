@@ -84,8 +84,8 @@ DEFAULT_PASSWORD=$(sudo grep 'temporary password' /var/log/mysqld.log | awk '{pr
 echo 'SHOW DATABASE;' | mysql -uroot -pRoboShop@1 &>>{LOG_FILE}
 
 if [ $? -ne 0 ]; then
-  echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" >/tmp/pass.sp1
-  mysql --connect-expired-password -uroot -p"${DEFAULT_PASSWORD}" </tmp/pass.sp1  &>>{LOG_FILE}
+  echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" >/tmp/pass.sq1
+  mysql --connect-expired-password -uroot -p"${DEFAULT_PASSWORD}" </tmp/pass.sq1  &>>{LOG_FILE}
   STAT_CHECK $? "Setup new Root Password"
 fi
 
@@ -96,8 +96,8 @@ echo 'uninstall plugin validate_password;' |  mysql -uroot -pRoboShop@1 &>>${LOG
 STAT_CHECK $? "Uninstall Password Plugin"
 fi
 
-curl -s -L -o /tmp/mysql.zip "https://github.com/roboshop-devops-project/mysql/archive/main.zip" &>>${LOG_FILE}
-STAT_CHECK $? "mysql Downloaded"
+#curl -s -L -o /tmp/mysql.zip "https://github.com/roboshop-devops-project/mysql/archive/main.zip" &>>${LOG_FILE}
+#STAT_CHECK $? "mysql Downloaded"
 #cd /tmp
 #unzip -o /tmp/mysql.zip &>>${LOG_FILE}
 #STAT_CHECK $? "mysql Extracted"
