@@ -41,7 +41,7 @@ NODEJS() {
   DOWNLOAD ${1}
 
   rm -rf /home/roboshop/${1} && mkdir -p /home/roboshop/${1} && cp -r /tmp/${1}-main/* /home/roboshop/${1} &>>$"{LOG_FILE}"
-  STAT_CHECK $? "Copy catalogue Content"
+  STAT_CHECK $? "Copy ${1} Content"
 
 
   cd /home/roboshop/${1} && npm install --unsafe-perm &>>$"{LOG_FILE}"
