@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source Components/CommonScript.sh
-Nodejs Catalogue
+NODEJS Catalogue
 #yum install nodejs make gcc-c++ -y &>>$"{LOG_FILE}"
 #STAT_CHECK $? "Nodejs Installation"
 #
