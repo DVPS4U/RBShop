@@ -49,7 +49,7 @@ NODEJS() {
 
   chown roboshop:roboshop -R /home/roboshop
 
-  sed -i -e 's/MONGO_DNSNAME/mongod.x4m.internal/' /home/roboshop/${1}/systemd.service &>>$"{LOG_FILE}" && mv /home/roboshop/${1}/systemd.service /etc/systemd/system/catalogue.service &>>$"{LOG_FILE}"
+  sed -i -e 's/MONGO_DNSNAME/mongod.x4m.internal/' /home/roboshop/${1}/systemd.service &>>$"{LOG_FILE}" && mv /home/roboshop/${1}/systemd.service /etc/systemd/system/${1}.service &>>$"{LOG_FILE}"
   STAT_CHECK $? "Update systemd files"
   #NOTE: We need to update the IP address of MONGODB Server in systemd.service file
   #Now, lets set up the service with systemctl.
