@@ -20,7 +20,7 @@ STAT_CHECK $? "Copy catalogue Content"
 
 
 cd /home/roboshop/catalogue && npm install --unsafe-perm &>>$"{LOG_FILE}"
-STAT_CHECK $? "Copy catalogue Content"
+STAT_CHECK $? "Install Nodejs"
 #NOTE: We need to update the IP address of MONGODB Server in systemd.service file
 #Now, lets set up the service with systemctl.
 
