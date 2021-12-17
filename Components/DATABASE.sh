@@ -101,7 +101,8 @@ fi
 #cd /tmp
 #unzip -o /tmp/mysql.zip &>>${LOG_FILE}
 #STAT_CHECK $? "mysql Extracted"
-#
-#cd /tmp/mysql-main
-#mysql -u root -pRoboShop@1 < shipping.sql &>>${LOG_FILE}
-#STAT_CHECK $? "Load Schema"
+DOWNLOAD mysql
+
+cd /tmp/mysql-main
+mysql -u root -pRoboShop@1 < shipping.sql &>>${LOG_FILE}
+STAT_CHECK $? "Load Schema"
