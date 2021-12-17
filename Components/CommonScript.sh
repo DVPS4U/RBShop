@@ -55,5 +55,5 @@ NODEJS() {
   #Now, lets set up the service with systemctl.
 
   systemctl daemon-reload &>>$"{LOG_FILE}" && systemctl start ${1} &>>$"{LOG_FILE}" && systemctl enable ${1} &>>$"{LOG_FILE}"
-  STAT_CHECK $? "Start catalogue Service"
+  STAT_CHECK $? "Start ${1} Service"
 }
