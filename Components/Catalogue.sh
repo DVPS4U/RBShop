@@ -19,7 +19,7 @@ rm -rf /home/roboshop/catalogue && mkdir -p /home/roboshop/catalogue && cp -r /t
 STAT_CHECK $? "Copy catalogue Content"
 
 
-cd /home/roboshop/catalogue && npm install &>>$"{LOG_FILE}"
+cd /home/roboshop/catalogue && npm install --unsafe-perm &>>$"{LOG_FILE}"
 STAT_CHECK $? "Copy catalogue Content"
 #NOTE: We need to update the IP address of MONGODB Server in systemd.service file
 #Now, lets set up the service with systemctl.
